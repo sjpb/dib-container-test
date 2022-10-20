@@ -1,0 +1,38 @@
+- hosts: localhost
+  gather_facts: yes # required by underlying roles
+  become: no
+  tasks:
+  - include_role:
+      name: stackhpc.os_images
+    vars:
+      os_images_list:
+        - name: ohpc
+          env:
+            DIB_CONTAINERFILE_NETWORK_DRIVER: host
+            DIB_CONTAINERFILE_RUNTIME: docker
+            DIB_CLOUD_INIT_DATASOURCES: 'Ec2, NoCloud, ConfigDrive'
+          elements:
+            - rocky-container-generic
+            - vm
+            # - "rocky-container"
+              # - "dracut-regenerate"
+              # - "cloud-init"
+              # - "cloud-init-growpart-lvm"
+              # - "elrepo"
+              # - "epel"
+              # - "selinux-permissive"
+              # - "dhcp-all-interfaces"
+              # - "vm"
+              # - "grub2"
+              # - "stable-interface-names"
+              # - "openssh-server"
+      os_images_git_elements:
+        - repo: https://github.com/stackhpc/stackhpc-image-elements
+          local: /tmp/stackhpc-image-elements
+          version: feature/rocky-container-generic
+          elements_path: elements
+      os_images_dib_venv: /home/rocky/dib-test/venv-dib
+      os_images_force_rebuild: false
+      os_images_upload: false
+      os_images_public: false
+      os_images_dib_pkg_name: git+https://github.com/openstack/diskimage-builder.git
