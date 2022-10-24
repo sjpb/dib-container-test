@@ -28,10 +28,10 @@
               # - "openssh-server"
       os_images_git_elements:
         - repo: https://github.com/stackhpc/stackhpc-image-elements
-          local: /tmp/stackhpc-image-elements
+          local: "{{ ansible_env.PWD }}/stackhpc-image-elements"
           version: feature/rocky-container-generic
           elements_path: elements
-      os_images_dib_venv: /home/rocky/dib-test/venv-dib
+      os_images_venv: "{{ ansible_env.PWD }}/image-venv"
       os_images_force_rebuild: false
       os_images_upload: false
       os_images_public: false
