@@ -1,0 +1,8 @@
+- hosts: localhost
+  gather_facts: yes # required by underlying roles
+  become: no
+  tasks:
+    - containers.podman.podman_image:
+        name: rocky_dib_test
+        path: "{{ ansible_env.PWD }}"
+        

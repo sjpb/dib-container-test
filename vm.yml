@@ -11,8 +11,9 @@
             DIB_CONTAINERFILE_NETWORK_DRIVER: host
             DIB_CONTAINERFILE_RUNTIME: podman
             DIB_CLOUD_INIT_DATASOURCES: 'Ec2, NoCloud, ConfigDrive'
+            DIB_RELEASE: 8
           elements:
-            - rocky-container-generic
+            - rocky-container-wrapper
             - vm
             # - "rocky-container"
               # - "dracut-regenerate"
@@ -29,7 +30,7 @@
       os_images_git_elements:
         - repo: https://github.com/stackhpc/stackhpc-image-elements
           local: "{{ ansible_env.PWD }}/stackhpc-image-elements"
-          version: feature/rocky-container-generic
+          version: feature/rocky-container-wrapper
           elements_path: elements
       os_images_venv: "{{ ansible_env.PWD }}/image-venv"
       os_images_force_rebuild: false
