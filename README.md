@@ -15,11 +15,7 @@ Currently lots of paths are hardcoded while I try to work out what's required.
     pip install ansible
     ansible-galaxy install -r requirements.yml
     yum install python3-virtualenv
-    # install docker
-    sudo groupadd docker
-    sudo usermod -aG docker $USER
-    newgrp docker 
-    sudo systemctl start docker
+    yum install -y podman
 
 # Use
 

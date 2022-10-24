@@ -9,7 +9,7 @@
         - name: ohpc
           env:
             DIB_CONTAINERFILE_NETWORK_DRIVER: host
-            DIB_CONTAINERFILE_RUNTIME: docker
+            DIB_CONTAINERFILE_RUNTIME: podman
             DIB_CLOUD_INIT_DATASOURCES: 'Ec2, NoCloud, ConfigDrive'
           elements:
             - rocky-container-generic
